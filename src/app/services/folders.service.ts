@@ -15,11 +15,6 @@ export class FoldersService {
   constructor(private http: HttpClient) {
   }
 
-  // public getData(folders) {
-  //   this.subject.next(this.http.get('/assets/folders.json') as Observable<{ folders: Folder[] }>);
-  //   console.log(folders)
-  // }
-
   public getData() {
     this.http.get('/assets/folders.json').subscribe((data: { folders: Folder[] }) => {
         this.subject.next(data.folders);
@@ -28,28 +23,38 @@ export class FoldersService {
     );
   }
 
-  // public getData(): Observable<{ folders: Folder[] }> {
-  //   return this.http.get('/assets/folders.json') as Observable<{ folders: Folder[] }>;
-  //   // const subject = new Subject();
-  // }
-  // public get() {
-  //   return this.getData();
-  // }
-
   public findFold(urls: string[]): Folder {
+    let findFolder;
     for (let i = 0; i < urls.length; i++) {
       for (const folder in this.foldersList) {
         if (this.foldersList[folder].id === +urls[i]) {
-          const findFolder = this.foldersList[folder];
+          findFolder = this.foldersList[folder];
           console.log(findFolder);
           return findFolder;
-
-          // urls.forEach(item, index){
-
-          // }
         }
       }
     }
-  }
+    // for (let i = 0; i < urls.length; i++) {
+    urls.forEach((id, ind) => {
+      findFolder.subFolders.forEach((el) => {
+        console.log(findFolder);
 
+        // if (findFolder[subFolder].id === +urls[id]) {
+        //   findFolder = findFolder[subFolder];
+        //   console.log(subFolder);
+        //   return findFolder;
+        // }
+
+        // })
+        // for (const subFolder in findFolder) {
+
+        // console.log(findFolder);
+        // if (findFolder[subFolder].id === +urls[i]) {
+        //     findFolder = findFolder[subFolder];
+        //     console.log(subFolder);
+        //     return findFolder;
+        //   }
+      });
+    });
+  }
 }

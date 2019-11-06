@@ -9,14 +9,3 @@ export interface Folder {
   };
   subFolders: Folder[];
 }
-
-
-//
-// contentFolder?: {
-//       title: string;
-//       text: string;
-//       image?: string;
-//   }
-//
-//
-//   folder.contentFolder

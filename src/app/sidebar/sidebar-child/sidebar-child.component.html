@@ -1,0 +1,11 @@
+<span [routerLink]="link">{{folder.nameFolder}}</span>
+<ul>
+  <li *ngFor="let subFolder of folder.subFolders">
+<!--    <h3>{{childUrl}}</h3>-->
+    <app-sidebar-child
+      class="tit-hov"
+      [folder]="subFolder"
+      [parentUrl]="childUrl">
+    </app-sidebar-child>
+  </li>
+</ul>
