@@ -30,8 +30,6 @@ export class ContentFolderComponent implements OnInit {
         // console.log(folders);
         const link: string[] = event.url.replace('/folders/', '').split('/');
         this.folder = this.foldersService.findFold(link);
-
-
       });
 
       // this.foldersService.get().subscribe((data) => {
