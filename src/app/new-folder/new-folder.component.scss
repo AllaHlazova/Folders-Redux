@@ -1,0 +1,35 @@
+textarea {
+  width: 100%;
+  height: 25rem;
+  padding: 12px 20px;
+  border: 2px solid #ccc;
+  background-color: #f8f8f8;
+  resize: none;
+  outline: none;
+}
+.btn-green{
+  background-color: #6b8e235e;
+  border-radius: 0rem!important;
+  font-size: 1.2rem;
+}
+.btn-green:hover{
+  background-color: #6B8E23;
+  color: white;
+}
+.pad{
+  padding: 0.5rem 5rem;
+}
+input{
+  border: none;
+  outline: none;
+  border-bottom: 1px solid grey;
+  font-size: 1.6rem;
+}
+input[type=text]:focus{
+  transform: scale(1.1);
+  animation-duration: 1s;
+}
+.st-for-icon{
+  font-size: 2rem;
+  margin-right: 3px;
+}
