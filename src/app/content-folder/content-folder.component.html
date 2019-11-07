@@ -1,5 +1,5 @@
 <div class="d-flex height">
-  <ng-container *ngIf="folder; else subFolder">
+  <ng-container *ngIf="folder">
     <div class="flex-column width pl-5">
       <div class="py-3">
         <i class="far fa-star st-for-icon mr-2"></i>
@@ -9,28 +9,11 @@
     <!--   img-->
     <div class="flex-column marg-t">
       <div class="title pl-5">
-        <img [src]="folder?.contentFolder.image" style="width: 120px;height: 120px">
+        <img [src]="folder?.contentFolder.image" class="img-st">
+      </div>
+      <div>
+        <button type="button" class="but btn btn-green px-4 ml-4 mt-4" [routerLink]="['/new-folder']">Add SubFolder</button>
       </div>
     </div>
   </ng-container>
-
-  <ng-template #subFolder>
-    <div class="flex-column width pl-5">
-      <div class="py-3">
-        <i class="far fa-star st-for-icon mr-2"></i>
-        <span class="title">{{subFolder.title}}</span>
-      </div>
-
-
-<!--        <span class="title">{{subFolder.contentFolder.title}}</span></div>-->
-
-</div>
-<!--      <div class="text">{{subFolder.contentFolder.text}}</div>-->
-<!--    </div>-->
-<!--    &lt;!&ndash;   img&ndash;&gt;-->
-<!--    <div class="flex-column pt-4">-->
-<!--      <div class="title pl-5">{{subFolder.contentFolder.image}}</div>-->
-<!--    </div>-->
-  </ng-template>
-
 </div>

@@ -9,6 +9,7 @@ import {FooterComponent} from './footer/footer.component';
 import {ContentFolderComponent} from './content-folder/content-folder.component';
 import {NewFolderComponent} from './new-folder/new-folder.component';
 import {SidebarChildComponent} from './sidebar/sidebar-child/sidebar-child.component';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,9 @@ import {SidebarChildComponent} from './sidebar/sidebar-child/sidebar-child.compo
   imports: [
     BrowserModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

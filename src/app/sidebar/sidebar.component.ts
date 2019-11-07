@@ -13,11 +13,6 @@ export class SidebarComponent implements OnInit {
   constructor(public foldersService: FoldersService) {
   }
   ngOnInit() {
-    // request to server
-    // this.foldersService.getData().subscribe((data: { folders: Folder[] }) => {
-    //   this.foldersList = data.folders;
-    // });
-
   // public getData() {
   //     this.http.get('/assets/folders.json').subscribe((data: { folders: Folder[] }) =>
   //       this.subject.next(data.folders));

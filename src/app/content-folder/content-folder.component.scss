@@ -24,8 +24,23 @@
   overflow: auto;
 }
 
-.marg-t{
+.marg-t {
   margin-top: 5rem;
 }
 
+.img-st {
+  width: 120px;
+  height: 120px;
+}
+
+.btn-green {
+  background-color: #6b8e235e;
+  border-radius: 0rem !important;
+  font-size: 1.2rem;
+}
+
+.btn-green:hover {
+  background-color: #6B8E23;
+  color: white;
+}
 
