@@ -16,6 +16,10 @@ const ROUTERS: Route[] = [
     path: 'new-folder',
     component: NewFolderComponent
   },
+  // {
+  //   path: 'new-parent-folder',
+  //   component: NewFolderComponent
+  // },
   {
     path: 'folders',
     children: [

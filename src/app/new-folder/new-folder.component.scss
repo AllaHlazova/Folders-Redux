@@ -7,29 +7,40 @@ textarea {
   resize: none;
   outline: none;
 }
-.btn-green{
+
+.btn-green {
   background-color: #6b8e235e;
-  border-radius: 0rem!important;
+  border-radius: 0rem !important;
   font-size: 1.2rem;
 }
-.btn-green:hover{
+
+.btn-green:hover {
   background-color: #6B8E23;
   color: white;
 }
-.pad{
+
+.pad {
   padding: 0.5rem 5rem;
 }
-input{
+
+input {
   border: none;
   outline: none;
   border-bottom: 1px solid grey;
   font-size: 1.6rem;
 }
-input[type=text]:focus{
+
+input[type=text]:focus {
   transform: scale(1.1);
   animation-duration: 1s;
 }
-.st-for-icon{
+
+.st-for-icon {
   font-size: 2rem;
   margin-right: 3px;
+}
+
+.errors {
+  color: purple;
+  font-weight: bold;
 }

@@ -3,9 +3,15 @@
     <div class="py-3">
       <i class="far fa-star st-for-icon mr-2"></i>
       <input placeholder="Type name" type="text" formControlName="title">
+      <div *ngIf="form.controls.title.invalid && form.controls.title.touched">
+        <div class="errors ml-5">{{ showErrors(form.controls.title) }}</div>
+      </div>
     </div>
     <div class="py-3">
       <textarea placeholder="Your text here" formControlName="text"></textarea>
+      <div *ngIf="form.controls.text.invalid && form.controls.text.touched">
+        <div class="errors">{{ showErrors(form.controls.text) }}</div>
+      </div>
     </div>
     <div class="py-3">
       <button type="button" class="but btn btn-green pad" (click)="save()">Save</button>
@@ -13,9 +19,9 @@
   </div>
   <div class="flex-column pt-4">
     <input placeholder="Image Url" name="img-user" type="text" formControlName="img">
-    <div>
-      {{ showErrors(form.controls.firstName) }}
-    </div>
+    <ng-container *ngIf="form.controls.img.invalid && form.controls.img.touched">
+        <div class="errors">{{ showErrors(form.controls.img) }}</div>
+    </ng-container>
   </div>
 </div>
 

@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FoldersService} from '../services/folders.service';
-import {Router} from '@angular/router';
 import {AbstractControl, FormControl, FormGroup, Validators} from '@angular/forms';
+import {Folder} from '../services/folder';
 
 @Component({
   selector: 'app-new-folder',
@@ -11,19 +11,20 @@ import {AbstractControl, FormControl, FormGroup, Validators} from '@angular/form
 export class NewFolderComponent implements OnInit {
 
   public form: FormGroup;
+  // public parentFolder: boolean;
 
-  constructor(private folderService: FoldersService, public router: Router) {
+  constructor(private folderService: FoldersService) {
   }
 
   ngOnInit() {
+
     this.form = new FormGroup({
-      title: new FormControl('', [Validators.minLength(2),
-        Validators.required, Validators.pattern('~^https?://\\S+(?:jpg|jpeg|png)$~')]),
-      text: new FormControl('', [Validators.minLength(3),
-        Validators.required]),
-      img: new FormControl('', [Validators.minLength(8), Validators.required]),
+      title: new FormControl('', [Validators.minLength(3), Validators.required]),
+      text: new FormControl('', [Validators.minLength(5), Validators.required]),
+      img: new FormControl('', [Validators.minLength(3), Validators.required
+        // Validators.pattern('(http(s?):)([/|.|\\w|\\s|-])*\\.(?:jpg|gif|png)')
+      ])
     });
-    // console.log(this.form);
   }
 
   public showErrors(control: AbstractControl): string {
@@ -31,13 +32,13 @@ export class NewFolderComponent implements OnInit {
     for (const value in control.errors) {
       switch (value) {
         case 'minlength':
-          errorText = `Expected length more ${control.errors.minlength.requiredLength}`;
+          errorText = `Expected length more characters`;
           break;
         case 'required':
           errorText = 'You must fill in the field';
           break;
         case 'pattern':
-          errorText = `You must ....`;
+          errorText = `You must write link`;
           break;
       }
     }
@@ -45,7 +46,18 @@ export class NewFolderComponent implements OnInit {
   }
 
   public save(): void {
-    this.folderService.save();
-      // ...
+    const newId = Math.floor((Math.random() * 1000) + 1);
+    const newFolder: Folder = {
+      nameFolder: 'Folder' + newId,
+      id: newId,
+      favorite: false,
+      contentFolder: {
+        title: this.form.value.title,
+        text: this.form.value.text,
+        image: this.form.value.img
+      },
+      subFolders: []
+    };
+    this.folderService.save(newFolder);
   }
 }
