@@ -1,6 +1,7 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
-import { SidebarChildComponent } from './sidebar-child.component';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
+import {SidebarChildComponent} from './sidebar-child.component';
+import {RouterTestingModule} from '@angular/router/testing';
+import {HttpClientModule} from '@angular/common/http';
 
 describe('SidebarChildComponent', () => {
   let component: SidebarChildComponent;
@@ -8,9 +9,13 @@ describe('SidebarChildComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SidebarChildComponent ]
+      imports: [
+        RouterTestingModule,
+        HttpClientModule
+      ],
+      declarations: [SidebarChildComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

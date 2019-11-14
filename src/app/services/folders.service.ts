@@ -10,7 +10,7 @@ import {Router} from '@angular/router';
 export class FoldersService {
 
   public subject = new BehaviorSubject<Folder[]>([]);
-  private foldersList: Folder[];
+  public foldersList: Folder[];
   public link: any;
 
   constructor(private http: HttpClient, private router: Router) {

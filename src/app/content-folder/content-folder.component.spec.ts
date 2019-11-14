@@ -1,5 +1,7 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { ContentFolderComponent } from './content-folder.component';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
+import {ContentFolderComponent} from './content-folder.component';
+import {RouterTestingModule} from '@angular/router/testing';
+import {HttpClientModule} from '@angular/common/http';
 
 describe('ContentFolderComponent', () => {
   let component: ContentFolderComponent;
@@ -7,9 +9,13 @@ describe('ContentFolderComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ContentFolderComponent ]
+      imports: [
+        RouterTestingModule,
+        HttpClientModule
+      ],
+      declarations: [ContentFolderComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

@@ -10,6 +10,7 @@ import {ContentFolderComponent} from './content-folder/content-folder.component'
 import {NewFolderComponent} from './new-folder/new-folder.component';
 import {SidebarChildComponent} from './sidebar/sidebar-child/sidebar-child.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -26,9 +27,14 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
     HttpClientModule,
     AppRoutingModule,
     FormsModule,
+    ReactiveFormsModule,
+    BrowserAnimationsModule
+  ],
+  exports: [
+    FormsModule,
     ReactiveFormsModule
   ],
-  providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}

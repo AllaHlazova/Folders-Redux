@@ -11,18 +11,16 @@ import {Folder} from '../services/folder';
 export class NewFolderComponent implements OnInit {
 
   public form: FormGroup;
-  // public parentFolder: boolean;
 
   constructor(private folderService: FoldersService) {
   }
 
   ngOnInit() {
-
     this.form = new FormGroup({
       title: new FormControl('', [Validators.minLength(3), Validators.required]),
       text: new FormControl('', [Validators.minLength(5), Validators.required]),
-      img: new FormControl('', [Validators.minLength(3), Validators.required
-        // Validators.pattern('(http(s?):)([/|.|\\w|\\s|-])*\\.(?:jpg|gif|png)')
+      img: new FormControl('', [Validators.minLength(3), Validators.required,
+        Validators.pattern('(http(s?):)([/|.|\\w|\\s|-])*\\.(?:jpg|gif|png)')
       ])
     });
   }
