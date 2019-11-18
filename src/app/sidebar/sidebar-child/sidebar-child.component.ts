@@ -16,9 +16,6 @@ export class SidebarChildComponent implements OnInit {
 
   ngOnInit() {
     this.link = '/folders/' + (this.parentUrl ? this.parentUrl + '/' : '') + (this.folder ? this.folder.id : '');
-    // this.link = '/folders/' + (this.parentUrl ? this.parentUrl + '/' : '') + this.folder.id;
     this.childUrl = (this.parentUrl ? this.parentUrl + '/' : '') + (this.folder ? this.folder.id : '');
-    // this.childUrl = (this.parentUrl ? this.parentUrl + '/' : '') + this.folder.id;
-    // console.log(this.childUrl);
   }
 }

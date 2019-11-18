@@ -13,18 +13,9 @@ export class SidebarComponent implements OnInit {
   constructor(public foldersService: FoldersService) {
   }
   ngOnInit() {
-  // public getData() {
-  //     this.http.get('/assets/folders.json').subscribe((data: { folders: Folder[] }) =>
-  //       this.subject.next(data.folders));
-  //   }
     this.foldersService.subject.subscribe(( folders: Folder[] ) => {
       this.foldersList = folders;
-      // console.log(folders);
     });
     this.foldersService.getData();
   }
-
-  // public open(): void {
-  //   this.router.navigate(['/ContentFolderComponent']);
-  // }
 }

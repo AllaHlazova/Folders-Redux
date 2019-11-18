@@ -10,7 +10,7 @@ import {Router} from '@angular/router';
 export class FoldersService {
 
   public subject = new BehaviorSubject<Folder[]>([]);
-  public foldersList: Folder[];
+  public foldersList: Folder[] = [];
   public link: any;
 
   constructor(private http: HttpClient, private router: Router) {
@@ -24,8 +24,7 @@ export class FoldersService {
     );
   }
 
-  public findFold(urls: string[]): Folder {
-    // console.log(urls);
+  public findFold(urls?: string[]): Folder {
     let findFolder;
     for (let i = 0; i < urls.length; i++) {
       for (const folder in this.foldersList) {
@@ -45,22 +44,16 @@ export class FoldersService {
       }
     }
   }
-
   public save(newFolder: Folder) {
     if (this.link == null) {
       this.foldersList.push(newFolder);
       this.subject.next(this.foldersList);
     } else {
-      // console.log(this.link)
       const array = this.link.replace('/folders/', '').split('/');
-      // console.log(array);
-
       const findFolder: Folder = this.findFold(array);
       findFolder.subFolders.push(newFolder);
-      // console.log(findFolder);
       this.link = this.router.navigate([this.link + '/' + newFolder.id]);
-      // console.log(findFolder);
-      // console.log(this.link);
+      console.log(findFolder.subFolders.length);
     }
   }
 }

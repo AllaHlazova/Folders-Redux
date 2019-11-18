@@ -13,9 +13,8 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit() {
   }
-  public func() {
+  public nav() {
     this.folderService.link = null;
-    // console.log(this.folderService.link);
     this.router.navigate(['/new-folder']);
   }
 }

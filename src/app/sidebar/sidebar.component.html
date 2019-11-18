@@ -1,22 +1,3 @@
-<!--<div class="bg height p-3 width">-->
-<!--  <div>-->
-<!--    <ng-container *ngFor="let folder of foldersList;">-->
-<!--      <div class="fontsize-title">-->
-<!--        <i class="far fa-folder-open"></i>-->
-<!--        <a class="titl-hov" [routerLink]="['folders', folder.id]">{{folder.nameFolder}}</a>-->
-<!--&lt;!&ndash;        <a class="titl-hov" [routerLink]="['folders', folder.id]">{{folder.nameFolder}}</a>&ndash;&gt;-->
-<!--      </div>-->
-<!--      <ng-container *ngFor="let subFolder of folder.subFolders;">-->
-<!--        <div class="fontsize-text pl-4 ml-3">-->
-<!--&lt;!&ndash;          <a class="titl-hov" routerLink="folders/folder.id/subFolders/subFolders.id">{{subFolder.nameFolder}}</a>&ndash;&gt;-->
-<!--          <a class="titl-hov" [routerLink]="'/folders/' + folder.id + '/' + subFolder.id">{{subFolder.nameFolder}}</a>-->
-<!--&lt;!&ndash;          <div class="fontsize-text">{{subFolder.nameFolder}}</div>&ndash;&gt;-->
-<!--        </div>-->
-<!--      </ng-container>-->
-<!--    </ng-container>-->
-<!--  </div>-->
-<!--</div>-->
-
 <div class="bg height p-3 width">
   <ul>
     <li *ngFor="let folder of foldersList;" class="fontsize-title">

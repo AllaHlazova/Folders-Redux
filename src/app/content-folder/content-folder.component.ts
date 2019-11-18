@@ -24,16 +24,10 @@ export class ContentFolderComponent implements OnInit, OnDestroy {
           this.foldersService.subject.subscribe((folders: Folder[]) => {
             if (folders.length) {
               this.foldersList = folders;
-              // console.log(folders);
-              // check if strings are valid or not
               if (event.url.startsWith('/folders')) {
                 const link: string[] = event.url.replace('/folders/', '').split('/');
                 this.folder = this.foldersService.findFold(link);
-                // this.foldersService.link = link;
                 this.foldersService.link = event.url;
-                console.log(event.url);
-                console.log(typeof event.url);
-                // console.log(link);
               }
             }
           });
