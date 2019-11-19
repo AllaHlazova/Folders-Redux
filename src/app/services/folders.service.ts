@@ -48,12 +48,12 @@ export class FoldersService {
     if (this.link == null) {
       this.foldersList.push(newFolder);
       this.subject.next(this.foldersList);
+      this.link = this.router.navigate(['/folders/' + '/' + newFolder.id]);
     } else {
       const array = this.link.replace('/folders/', '').split('/');
       const findFolder: Folder = this.findFold(array);
       findFolder.subFolders.push(newFolder);
       this.link = this.router.navigate([this.link + '/' + newFolder.id]);
-      console.log(findFolder.subFolders.length);
     }
   }
 }

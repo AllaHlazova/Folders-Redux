@@ -1,5 +1,5 @@
 <div class="d-flex flex-row justify-content-between height" [formGroup]="form">
-  <div class="flex-column px-5 py-2">
+  <div class="flex-column px-4 py-2">
     <div class="py-3">
       <i class="far fa-star st-for-icon mr-2"></i>
       <input placeholder="Type name" type="text" formControlName="title">
@@ -17,7 +17,7 @@
       <button type="button" class="but btn btn-green pad" (click)="save()">Save</button>
     </div>
   </div>
-  <div class="flex-column pt-4">
+  <div class="flex-column pt-4 mr-3">
     <input placeholder="Image Url" name="img-user" type="text" formControlName="img">
     <ng-container *ngIf="form.controls.img.invalid && form.controls.img.touched">
         <div class="errors">{{ showErrors(form.controls.img) }}</div>
