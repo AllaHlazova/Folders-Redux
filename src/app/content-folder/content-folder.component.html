@@ -1,15 +1,15 @@
 <div class="d-flex height">
-  <ng-container *ngIf="folder">
+  <ng-container *ngIf="(folder$ | async)">
     <div class="flex-column width pl-5">
       <div class="py-3">
         <i class="far fa-star st-for-icon mr-2"></i>
-        <span class="title">{{folder.contentFolder.title}}</span></div>
-      <div class="text">{{folder.contentFolder.text}}</div>
+        <span class="title">{{(folder$ | async).contentFolder.title}}</span></div>
+      <div class="text">{{(folder$ | async).contentFolder.text}}</div>
     </div>
     <!--   img-->
     <div class="flex-column marg-t">
       <div class="title pl-5">
-        <img [src]="folder?.contentFolder.image" class="img-st">
+        <img [src]="(folder$ | async)?.contentFolder.image" class="img-st">
       </div>
       <div>
         <button type="button" class="but btn btn-green px-4 ml-4 mt-4" [routerLink]="['/new-folder']">Add SubFolder</button>

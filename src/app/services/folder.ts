@@ -7,5 +7,5 @@ export interface Folder {
     text: string;
     image: string;
   };
-  subFolders: Folder[];
+  subFolders?: Folder[];
 }

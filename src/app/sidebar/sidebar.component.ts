@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
+import {select, Store} from '@ngrx/store';
+import {allFoldersList, ListState} from '../store/selectors';
+import {GetData} from '../store/actions';
 import {Folder} from '../services/folder';
-import {FoldersService} from '../services/folders.service';
 
 @Component({
   selector: 'app-sidebar',
@@ -8,14 +10,16 @@ import {FoldersService} from '../services/folders.service';
   styleUrls: ['./sidebar.component.scss']
 })
 export class SidebarComponent implements OnInit {
+
   public foldersList: Folder[] = [];
 
-  constructor(public foldersService: FoldersService) {
-  }
-  ngOnInit() {
-    this.foldersService.subject.subscribe(( folders: Folder[] ) => {
-      this.foldersList = folders;
+  constructor(private store: Store<{ list: ListState }>) {
+    store.pipe(select(allFoldersList)).subscribe((data: Folder[]) => {
+      this.foldersList = data;
     });
-    this.foldersService.getData();
+  }
+
+  ngOnInit() {
+    this.store.dispatch(new GetData());
   }
 }

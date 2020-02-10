@@ -12,6 +12,13 @@ import {SidebarChildComponent} from './sidebar/sidebar-child/sidebar-child.compo
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
+import {StoreModule} from '@ngrx/store';
+import { FoldersReducer } from './store/reducer';
+import {ListEffects} from './store/effects';
+import { EffectsModule } from '@ngrx/effects';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { environment } from '../environments/environment';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,7 +35,11 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    StoreModule.forRoot({ list: FoldersReducer }),
+    // EffectsModule.forRoot([ShopEffects]),
+    EffectsModule.forRoot([ListEffects]),
+    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
   ],
   exports: [
     FormsModule,

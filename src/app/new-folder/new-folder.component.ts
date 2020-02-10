@@ -1,7 +1,9 @@
 import {Component, OnInit} from '@angular/core';
-import {FoldersService} from '../services/folders.service';
 import {AbstractControl, FormControl, FormGroup, Validators} from '@angular/forms';
 import {Folder} from '../services/folder';
+import {Store} from '@ngrx/store';
+import {ListState} from '../store/selectors';
+import {AddFolder} from '../store/actions';
 
 @Component({
   selector: 'app-new-folder',
@@ -12,7 +14,7 @@ export class NewFolderComponent implements OnInit {
 
   public form: FormGroup;
 
-  constructor(private folderService: FoldersService) {
+  constructor(private store: Store<{ list: ListState }>) {
   }
 
   ngOnInit() {
@@ -43,7 +45,7 @@ export class NewFolderComponent implements OnInit {
     return errorText;
   }
 
-  public save(): void {
+  public saveFolder(): void {
     const newId = Math.floor((Math.random() * 1000) + 1);
     const newFolder: Folder = {
       nameFolder: 'Folder' + newId,
@@ -56,6 +58,6 @@ export class NewFolderComponent implements OnInit {
       },
       subFolders: []
     };
-    this.folderService.save(newFolder);
+    this.store.dispatch(new AddFolder(newFolder));
   }
 }
