@@ -29,7 +29,6 @@ export class SetLink implements Action {
   }
 }
 
-// for add folder to folderList
 export class AddFolder implements Action {
   readonly type = ActionTypes.AddFolder;
 

@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {Actions, Effect, ofType} from '@ngrx/effects';
 import {EMPTY} from 'rxjs';
 import {catchError, map, mergeMap, withLatestFrom} from 'rxjs/operators';
-import {ActionTypes, LoadItems, SetLink, UpdateFoldersList} from './actions';
+import {ActionTypes, AddFolder, LoadItems, SetLink, UpdateFoldersList} from './actions';
 import {FoldersService} from '../services/folders.service';
 import {Folder} from '../services/folder';
 import {select, Store} from '@ngrx/store';
@@ -12,13 +12,6 @@ import {Router} from '@angular/router';
 @Injectable()
 
 export class ListEffects {
-  constructor(
-    private actions$: Actions,
-    private foldersService: FoldersService,
-    public router: Router,
-    private store: Store<{ list: ListState }>,
-  ) {
-  }
 
   @Effect()
   loadFolders$ = this.actions$.pipe(
@@ -36,36 +29,33 @@ export class ListEffects {
   @Effect()
   SaveFolders$ = this.actions$.pipe(
     ofType(ActionTypes.AddFolder),
-    withLatestFrom( (this.store.pipe(select((allFoldersList)))), (this.store.pipe(select(currLink)))),
-    map(([action, list, link]: [any, Folder[], string[] ]) => {
+    withLatestFrom((this.store.pipe(select((allFoldersList)))), (this.store.pipe(select(currLink)))),
+    map(([action, list, link]: [AddFolder, Folder[], string[]]) => {
       this.saveNewFolder(action.newFolder, link, list);
       return new UpdateFoldersList(list);
     })
   );
-  // withLatestFrom(this.store.pipe(select((findFolder))) ),
-  // map(([action, selectFold]: [any, Folder]) => {
-  //   // console.log(11, selectFold);
-  //   console.log('selectFold.subFolders', selectFold.subFolders);
-  //   selectFold.subFolders.push(action.newFolder);
-  //   // this.router.navigate(['/folders/' + '/' + selectFold.id]);
-  //   return new UpdateFoldersList();
-  // })
 
+  constructor(
+    private actions$: Actions,
+    private foldersService: FoldersService,
+    public router: Router,
+    private store: Store<{ list: ListState }>,
+  ) {
+  }
 
-  public saveNewFolder(newFolder: Folder, link?: any, list?: Folder[]) {
+  public saveNewFolder(newFolder: Folder, link?: string[], list?: Folder[]) {
     // add parent folder
-    if (link == null) {
+    if (!link) {
       list.push(newFolder);
-      const newLink: any = this.router.navigate(['/folders/' + newFolder.id]);
-      this.store.dispatch(new SetLink(newLink));
+      this.router.navigate(['/folders/' + newFolder.id]);
     } else {
       // add sub folder
       const currFindFolder: Folder = findFold(link, list);
       currFindFolder.subFolders.push(newFolder);
-      const linkNew = link.toString();
-      const routLink = linkNew.replace(',', '/');
-      const url: any = this.router.navigate(['/folders/' + routLink + '/' + newFolder.id]);
-      this.store.dispatch(new SetLink(url));
+      link.push(newFolder.id.toString());
+      this.store.dispatch(new SetLink(link));
+      this.router.navigate(['folders', ...link]);
     }
   }
 }

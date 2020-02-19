@@ -2,7 +2,6 @@ import {ActionsUnion, ActionTypes} from './actions';
 import {ListState, INITIAL_STATE} from './selectors';
 
 export function FoldersReducer(state: ListState = INITIAL_STATE, action: ActionsUnion) {
-  // console.log(state);
   switch (action.type) {
     case ActionTypes.LoadSuccess:
       return {
